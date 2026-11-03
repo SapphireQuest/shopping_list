@@ -1,4 +1,4 @@
-public class ShoppingListApp 
+public class App 
 {
     public static void main(String[] args) 
     {
