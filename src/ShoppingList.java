@@ -1,3 +1,4 @@
+package src;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +51,6 @@ public class ShoppingList
 
             System.out.println("[" + categoryName + "] " + productName);
         }
-        System.out.println("======================\n");
+        System.out.println("===================\n");
     }   
 }
