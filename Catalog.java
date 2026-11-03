@@ -31,4 +31,7 @@ public class Catalog
         categories.add(newCategory);
         return newCategory;
     }
+
+
+  
 }

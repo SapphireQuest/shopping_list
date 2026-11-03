@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FileManager 
@@ -65,5 +66,28 @@ public class FileManager
     }
 
 
-    
+    public void saveShoppingList(ShoppingList shoppingList, String fileName)
+    {
+        List<String> linesToSave = new ArrayList<>();
+
+        for(Product product : shoppingList.getItems())
+        {
+            String categoryName = product.getCategory().getName();
+            String productName = product.getName();
+            linesToSave.add(categoryName + ";" + productName);
+        }
+
+        Path path = Paths.get(fileName);
+
+        try
+        {
+            Files.write(path, linesToSave);
+            System.out.println("Succesfully saved shopping list to: " + fileName);
+        }
+        catch (IOException e)
+        {
+            System.out.println("Error: Counldn't save the file!");
+            System.out.println(e.getMessage());
+        }
+    }
 }
