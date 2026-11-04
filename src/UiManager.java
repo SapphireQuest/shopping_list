@@ -1,6 +1,7 @@
 package src;
 import java.util.Scanner;
 import java.util.List;
+import java.util.ArrayList;
 
 public class UiManager
 {
@@ -69,28 +70,39 @@ public class UiManager
             return;
         }
 
+        List<Category> categoriesInCart = new ArrayList<>();
+        for (Product product : shoppingList.getItems()) 
+        {
+            if (!categoriesInCart.contains(product.getCategory())) 
+            {
+                categoriesInCart.add(product.getCategory());
+            }
+        }
+
+        System.out.println("\nSelect a category from your shopping list:");
+        Category selectedCategory = selectCategory(categoriesInCart);
+        if (selectedCategory == null) 
+        {
+            return;
+        }
+
+        List<Product> productsToRemove = new ArrayList<>();
+        for (Product product : shoppingList.getItems()) 
+        {
+            if (product.getCategory().equals(selectedCategory)) 
+            {
+                productsToRemove.add(product);
+            }
+        }
+
         System.out.println("\nSelect a product to remove:");
         List<Product> currentItems = shoppingList.getItems();
         
-        for (int i = 0; i < currentItems.size(); i++) 
-        {
-            Product product = currentItems.get(i);
-            System.out.println((i + 1) + ". [" + product.getCategory().getName() + "] " + product.getName());
-        }
+        
         System.out.println("0. Cancel");
         System.out.print("Your choice: ");
-
-        int index = readIntFromUser();
         
-        if (index > 0 && index <= currentItems.size()) 
-        {
-            Product productToRemove = currentItems.get(index - 1);
-            shoppingList.removeProduct(productToRemove);
-        } 
-        else if (index != 0) 
-        {
-            System.out.println("Invalid choice.");
-        }
+        Product selectedProduct = selectProduct(productsToRemove);
     }
     
 
