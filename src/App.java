@@ -10,7 +10,7 @@ public class App
         ShoppingList shoppingList = new ShoppingList();
 
         UiManager ui = new UiManager(catalog, shoppingList, fileManager);
-        ui.start();
+        ui.start_app();
     }
     
 }

@@ -19,7 +19,7 @@ public class UiManager
         this.fileManager = fileManager;
     }
 
-    public void start() 
+    public void start_app() 
     {
         boolean running = true;
 
