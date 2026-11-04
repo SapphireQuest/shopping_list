@@ -61,7 +61,6 @@ public class UiManager
         }
     }
 
-
     private void handleRemoveProduct() 
     {
         if (shoppingList.getItems().isEmpty()) 
@@ -96,14 +95,16 @@ public class UiManager
         }
 
         System.out.println("\nSelect a product to remove:");
-        List<Product> currentItems = shoppingList.getItems();
-        
-        
-        System.out.println("0. Cancel");
-        System.out.print("Your choice: ");
-        
         Product selectedProduct = selectProduct(productsToRemove);
+        
+        if (selectedProduct == null) 
+        {
+            return;
+        }
+
+        shoppingList.removeProduct(selectedProduct);
     }
+    
     
 
     private void handleAddProduct()
