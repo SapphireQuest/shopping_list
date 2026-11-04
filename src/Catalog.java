@@ -14,7 +14,7 @@ public class Catalog
 
     public List<Category> getCategories()
     {
-        return categories;
+        return List.copyOf(categories);
     }
 
 

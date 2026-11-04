@@ -13,7 +13,7 @@ public class ShoppingList
 
     public List<Product> getItems()
     {
-        return new ArrayList<>(items);
+        return List.copyOf(items);
     }
 
     public void addProduct(Product product)

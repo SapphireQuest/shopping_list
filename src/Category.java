@@ -20,7 +20,7 @@ public class Category
 
     public List<Product> getProducts()
     {
-        return new ArrayList<>(products);
+        return List.copyOf(products);
     }
 
     public void addProduct(Product product)
